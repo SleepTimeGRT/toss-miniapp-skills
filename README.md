@@ -21,6 +21,37 @@
 | `toss-miniapp-code-patterns` | SDK 기능별 코드 예제 레퍼런스 (GitHub 예제 동적 조회) |
 | `toss-miniapp-docs-live` | 공식 문서 실시간 검색 (Playwright, 항상 최신) |
 
+## 사전 요구사항
+
+일부 스킬은 외부 도구가 필요합니다. 해당 도구가 없어도 다른 스킬은 정상 동작합니다.
+
+| 도구 | 필요한 스킬 | 용도 | 설치 |
+|------|-------------|------|------|
+| [GitHub CLI (`gh`)](https://cli.github.com) | `toss-miniapp-code-patterns` | 예제 저장소 동적 탐색·조회 | `brew install gh` |
+| [Playwright MCP](https://github.com/anthropics/claude-code/tree/main/plugins/playwright) | `toss-miniapp-docs-live` | 공식 문서 실시간 검색 | Claude Code에 Playwright 플러그인 추가 |
+
+### GitHub CLI 설정
+
+```bash
+# 설치
+brew install gh          # macOS
+# 또는: https://cli.github.com 에서 다운로드
+
+# 인증
+gh auth login
+```
+
+### Playwright MCP (Claude Code)
+
+Claude Code에 Playwright 플러그인이 이미 설치되어 있다면 추가 설정이 필요 없습니다.
+설치되지 않은 경우:
+
+```bash
+claude plugin add anthropic/playwright
+```
+
+> **참고**: 세션 시작 시 누락된 dependency가 있으면 자동으로 안내 메시지가 표시됩니다.
+
 ## 설치 방법
 
 ### Claude Code
