@@ -36,6 +36,25 @@ claude plugin add SleepTimeGRT/toss-miniapp-skills
 > 토스 로그인 구현 코드 보여줘
 ```
 
+### Gemini CLI
+
+`SKILL.md` 포맷이 호환되므로 스킬 디렉토리에 복사하면 바로 사용할 수 있습니다:
+
+```bash
+# 프로젝트 단위 설치
+git clone https://github.com/SleepTimeGRT/toss-miniapp-skills.git /tmp/toss-skills
+cp -r /tmp/toss-skills/skills/* .gemini/skills/
+```
+
+```bash
+# 글로벌 설치 (모든 프로젝트에서 사용)
+cp -r /tmp/toss-skills/skills/* ~/.gemini/skills/
+```
+
+> `.agents/skills/` 경로도 동일하게 지원됩니다.
+
+설치 후 Gemini가 요청에 맞는 스킬을 자동으로 감지하고 `activate_skill`로 로딩합니다.
+
 ### Codex
 
 [skill-installer](https://github.com/anthropics/skill-installer)를 통해 설치합니다:
@@ -50,11 +69,22 @@ $skill-installer
 install GitHub repo SleepTimeGRT/toss-miniapp-skills
 ```
 
+### Cursor
+
+프로젝트 루트에 `.cursor/rules/` 디렉토리를 만들고 스킬 파일을 복사합니다:
+
+```bash
+mkdir -p .cursor/rules
+# 원하는 스킬을 개별 다운로드
+curl -o .cursor/rules/toss-miniapp-code-patterns.md \
+  https://raw.githubusercontent.com/SleepTimeGRT/toss-miniapp-skills/main/skills/toss-miniapp-code-patterns/SKILL.md
+curl -o .cursor/rules/toss-miniapp-dev-tutorial.md \
+  https://raw.githubusercontent.com/SleepTimeGRT/toss-miniapp-skills/main/skills/toss-miniapp-dev-tutorial/SKILL.md
+```
+
 ### 기타 LLM / AI 에이전트
 
 스킬 파일을 직접 다운로드하여 컨텍스트로 제공할 수 있습니다.
-
-**방법 1: 전체 스킬을 시스템 프롬프트에 포함**
 
 ```bash
 # 원하는 스킬 파일을 다운로드
@@ -63,19 +93,7 @@ curl -O https://raw.githubusercontent.com/SleepTimeGRT/toss-miniapp-skills/main/
 
 다운로드한 `.md` 파일을 에이전트의 시스템 프롬프트나 컨텍스트 파일로 추가하세요.
 
-**방법 2: Cursor에서 사용**
-
-프로젝트 루트에 `.cursor/rules/` 디렉토리를 만들고 스킬 파일을 복사합니다:
-
-```bash
-mkdir -p .cursor/rules
-curl -o .cursor/rules/toss-miniapp.md \
-  https://raw.githubusercontent.com/SleepTimeGRT/toss-miniapp-skills/main/skills/toss-miniapp-code-patterns/SKILL.md
-```
-
-**방법 3: CLAUDE.md / AGENTS.md에 참조 추가**
-
-프로젝트의 `CLAUDE.md`나 에이전트 설정 파일에 아래 내용을 추가하세요:
+프로젝트의 `CLAUDE.md`, `AGENTS.md`, `GEMINI.md` 등에 참조를 추가할 수도 있습니다:
 
 ```markdown
 ## 참고 자료
