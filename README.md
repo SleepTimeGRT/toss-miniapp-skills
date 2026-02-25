@@ -11,7 +11,6 @@
 | `toss-miniapp-onboarding` | 앱인토스 소개, 콘솔 설정, 앱 등록 |
 | `toss-miniapp-design` | 디자인 가이드라인, TDS(Toss Design System) |
 | `toss-miniapp-dev-tutorial` | React Native / WebView / Unity 개발 튜토리얼 |
-| `toss-miniapp-code-patterns` | SDK 기능별 코드 예제 레퍼런스 (GitHub 예제 연동) |
 | `toss-miniapp-toss-login` | 토스 로그인 연동 |
 | `toss-miniapp-game-login` | 게임 로그인 (서버 없이 유저 식별) |
 | `toss-miniapp-tosspay` | 토스페이 결제 연동 |
@@ -19,6 +18,8 @@
 | `toss-miniapp-ads` | 전면 광고 / 리워드 광고 |
 | `toss-miniapp-server-integration` | 서버 연동 및 API 통신 |
 | `toss-miniapp-testing-deploy` | 샌드박스 테스트, 빌드, 배포 |
+| `toss-miniapp-code-patterns` | SDK 기능별 코드 예제 레퍼런스 (GitHub 예제 동적 조회) |
+| `toss-miniapp-docs-live` | 공식 문서 실시간 검색 (Playwright, 항상 최신) |
 
 ## 설치 방법
 
@@ -101,6 +102,50 @@ curl -O https://raw.githubusercontent.com/SleepTimeGRT/toss-miniapp-skills/main/
 - 토스 미니앱 개발 문서: https://developers-apps-in-toss.toss.im
 - 토스 미니앱 스킬: https://github.com/SleepTimeGRT/toss-miniapp-skills
 ```
+
+## 업데이트
+
+이 플러그인은 서드파티 마켓플레이스로 배포되므로, **auto-update가 기본 OFF**입니다.
+스킬 내용이 업데이트되면 아래 방법으로 최신 버전을 받으세요.
+
+### Claude Code
+
+**방법 1: 수동 업데이트**
+
+```bash
+claude plugin update toss-miniapp
+```
+
+**방법 2: auto-update 활성화 (권장)**
+
+```
+/plugin → Marketplaces 탭 → 마켓플레이스 선택 → Enable auto-update
+```
+
+auto-update를 켜면 세션 시작 시 자동으로 최신 버전을 체크합니다.
+
+**캐시 문제 발생 시**
+
+```bash
+rm -rf ~/.claude/plugins/cache
+# 이후 재설치
+claude plugin add SleepTimeGRT/toss-miniapp-skills
+```
+
+### Gemini CLI
+
+```bash
+# 최신 버전 다시 복사
+git clone https://github.com/SleepTimeGRT/toss-miniapp-skills.git /tmp/toss-skills
+cp -r /tmp/toss-skills/skills/* .gemini/skills/
+```
+
+### Cursor / 기타
+
+스킬 파일을 다시 다운로드하세요. raw URL은 항상 최신 main 브랜치를 가리킵니다.
+
+> **참고**: `toss-miniapp-docs-live` 스킬은 Playwright로 공식 문서를 실시간 조회하므로,
+> 스킬 자체가 업데이트되지 않아도 항상 최신 문서 내용을 가져올 수 있습니다.
 
 ## 관련 리소스
 
