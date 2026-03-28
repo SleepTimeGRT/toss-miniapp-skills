@@ -18,8 +18,10 @@
 | `toss-miniapp-ads` | 전면 광고 / 리워드 광고 |
 | `toss-miniapp-server-integration` | 서버 연동 및 API 통신 |
 | `toss-miniapp-testing-deploy` | 샌드박스 테스트, 빌드, 배포 |
+| `toss-miniapp-checklist` | 출시 검수 체크리스트 (게임/비게임) |
 | `toss-miniapp-code-patterns` | SDK 기능별 코드 예제 레퍼런스 (GitHub 예제 동적 조회) |
-| `toss-miniapp-docs-live` | 공식 문서 실시간 검색 (Playwright, 항상 최신) |
+| `toss-miniapp-docs-live` | 공식 문서 실시간 검색 (llms.txt / WebFetch) |
+| `toss-miniapp-maintenance` | 스킬 최신화 점검 및 업데이트 |
 
 ## 사전 요구사항
 
@@ -28,7 +30,7 @@
 | 도구 | 필요한 스킬 | 용도 | 설치 |
 |------|-------------|------|------|
 | [GitHub CLI (`gh`)](https://cli.github.com) | `toss-miniapp-code-patterns` | 예제 저장소 동적 탐색·조회 | `brew install gh` |
-| [Playwright MCP](https://github.com/anthropics/claude-code/tree/main/plugins/playwright) | `toss-miniapp-docs-live` | 공식 문서 실시간 검색 | Claude Code에 Playwright 플러그인 추가 |
+| [Playwright MCP](https://github.com/anthropics/claude-code/tree/main/plugins/playwright) | `toss-miniapp-docs-live` (폴백용) | 브라우저 기반 문서 검색 (선택) | Claude Code에 Playwright 플러그인 추가 |
 
 ### GitHub CLI 설정
 
@@ -175,8 +177,9 @@ cp -r /tmp/toss-skills/skills/* .gemini/skills/
 
 스킬 파일을 다시 다운로드하세요. raw URL은 항상 최신 main 브랜치를 가리킵니다.
 
-> **참고**: `toss-miniapp-docs-live` 스킬은 Playwright로 공식 문서를 실시간 조회하므로,
+> **참고**: `toss-miniapp-docs-live` 스킬은 llms-full.txt를 통해 공식 문서를 실시간 조회하므로,
 > 스킬 자체가 업데이트되지 않아도 항상 최신 문서 내용을 가져올 수 있습니다.
+> `toss-miniapp-maintenance` 스킬을 사용하면 모든 스킬의 최신화 상태를 점검하고 업데이트할 수 있습니다.
 
 ## 관련 리소스
 
